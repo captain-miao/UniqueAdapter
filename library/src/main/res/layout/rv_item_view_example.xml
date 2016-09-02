@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+
+        <import type="com.github.captain_miao.uniqueadapter.library.ItemData"/>
+
+        <import type="com.github.captain_miao.uniqueadapter.library.OnClickViewPresenter"/>
+
+        <variable
+            name="viewModel"
+            type="ItemData"/>
+
+        <variable
+            name="presenter"
+            type="OnClickViewPresenter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> presenter.onClick(viewModel)}"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingBottom="14.5dp"
+            android:paddingTop="14.5dp"
+            android:text="@{viewModel.itemName}"/>
+
+
+    </LinearLayout>
+
+
+</layout>
