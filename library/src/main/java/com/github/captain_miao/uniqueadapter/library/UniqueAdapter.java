@@ -48,7 +48,7 @@ public class UniqueAdapter extends RecyclerView.Adapter<UniqueAdapter.UniqueView
 
     @Override
     public UniqueViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType > 0) {// it's RvResourceId
+        if (viewType > 0) {// it's RvResourceId
             return new UniqueViewHolder(
                     LayoutInflater
                             .from(parent.getContext())
@@ -60,19 +60,21 @@ public class UniqueAdapter extends RecyclerView.Adapter<UniqueAdapter.UniqueView
 
     @Override
     public void onBindViewHolder(UniqueViewHolder holder, int position) {
-        holder.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.viewModel, getItem(position));
-        if(mPresenter != null){
-            holder.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.presenter, mPresenter);
+        ItemData item = mDataList.get(position);
+        holder.dataBinding.setVariable(item.getViewModelVariableId(), item);
+        if (mPresenter != null) {
+            holder.dataBinding.setVariable(item.getPresenterVariableId(), mPresenter);
         }
     }
 
-    @Override public int getItemViewType(int position) {
+    @Override
+    public int getItemViewType(int position) {
         ItemData item = mDataList.get(position);
-        return item.getRvResourceId();
+        return item.getItemViewLayoutId();
     }
 
 
-    public class UniqueViewHolder extends RecyclerView.ViewHolder{
+    public class UniqueViewHolder extends RecyclerView.ViewHolder {
         public ViewDataBinding dataBinding;
 
         public UniqueViewHolder(View itemView) {

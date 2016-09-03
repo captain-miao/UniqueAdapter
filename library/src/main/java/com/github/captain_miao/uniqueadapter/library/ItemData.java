@@ -23,5 +23,10 @@ package com.github.captain_miao.uniqueadapter.library;
 
 public interface ItemData {
 
-    int getRvResourceId();
+    // recycleView's itemView layout
+    int getItemViewLayoutId();
+    // itemView dataBinding variable: ? extends ItemData
+    int getViewModelVariableId();
+    // itemView dataBinding variable:OnClickViewPresenter.onClick(View view, T t);
+    int getPresenterVariableId();
 }

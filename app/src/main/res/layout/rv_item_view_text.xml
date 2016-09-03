@@ -4,13 +4,13 @@
 
     <data>
 
-        <import type="com.github.captain_miao.uniqueadapter.library.ItemData"/>
+        <import type="com.github.captain_miao.uniqueadapter.model.TextModel"/>
 
         <import type="com.github.captain_miao.uniqueadapter.library.OnClickViewPresenter"/>
 
         <variable
             name="viewModel"
-            type="ItemData"/>
+            type="TextModel"/>
 
         <variable
             name="presenter"
@@ -20,19 +20,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> presenter.onClick(viewModel)}"
+        android:onClick="@{(v) -> presenter.onClick(v, viewModel)}"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="2dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingBottom="14.5dp"
-            android:paddingTop="14.5dp"
-            android:text="@{viewModel.itemName}"/>
+            android:gravity="center_horizontal"
+            android:text="@{viewModel.text}"/>
 
 
     </LinearLayout>
