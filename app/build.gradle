@@ -28,6 +28,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:${this.supportLibrariesVersion}"
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.captain-miao:uniqueadapter:1.0.0-SNAPSHOT'
 
-    compile project(':library')
+    //compile project(':library')
 }

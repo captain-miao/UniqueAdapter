@@ -1,6 +1,24 @@
 # UniqueAdapter
 The UniqueAdapter With DataBinding...
 
+## Gradle
+Get library from  [oss.sonatype.org.io](https://oss.sonatype.org/content/repositories/snapshots)
+```java
+
+repositories {
+
+    maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+
+}
+
+dependencies {
+    compile 'com.github.captain-miao:uniqueadapter:1.0.0-SNAPSHOT'
+}
+
+```
+
+
 ## Step 1: define data model
 ```
 public class TextModel extends BaseModel implements ItemData {
@@ -112,3 +130,7 @@ public class MainActivity extends AppCompatActivity implements OnClickViewPresen
 ```
 ## Step 4: run
 ![unique-adapter-recycle-view](https://raw.githubusercontent.com/captain-miao/me.github.com/master/databinding/unique-adapter-recycle-view.jpg "unique-adapter-recycle-view")
+
+# License
+
+This project is licensed under the terms of the MIT license.
