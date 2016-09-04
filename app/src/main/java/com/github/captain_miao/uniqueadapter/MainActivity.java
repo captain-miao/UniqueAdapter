@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.github.captain_miao.uniqueadapter.library.ItemData;
+import com.github.captain_miao.uniqueadapter.library.ItemModel;
 import com.github.captain_miao.uniqueadapter.library.OnClickViewPresenter;
 import com.github.captain_miao.uniqueadapter.library.UniqueAdapter;
 import com.github.captain_miao.uniqueadapter.model.ImageModel;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements OnClickViewPresen
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_example);
 
-        List<ItemData> dataList = getMockData();
+        List<ItemModel> dataList = getMockData();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements OnClickViewPresen
     }
 
     @Override
-    public void onClick(View view, ItemData itemData) {
+    public void onClick(View view, ItemModel itemData) {
         if(itemData instanceof TextModel){
             Toast.makeText(this, ((TextModel)itemData).text, Toast.LENGTH_SHORT).show();
         } else if(itemData instanceof ImageModel){
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements OnClickViewPresen
     }
 
 
-    private List<ItemData> getMockData(){
-        List<ItemData> dataList = new ArrayList<>();
+    private List<ItemModel> getMockData(){
+        List<ItemModel> dataList = new ArrayList<>();
         dataList.add(new TextModel("Photo 1"));
         dataList.add(new ImageModel("http://ww2.sinaimg.cn/bmiddle/7a8aed7bjw1f340c8jrk4j20j60srgpf.jpg"));
         dataList.add(new TextModel("Photo 2"));

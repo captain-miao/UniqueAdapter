@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.captain-miao:uniqueadapter:1.0.0-SNAPSHOT'
+    compile 'com.github.captain-miao:uniqueadapter:1.0.1-SNAPSHOT'
 }
 
 ```
