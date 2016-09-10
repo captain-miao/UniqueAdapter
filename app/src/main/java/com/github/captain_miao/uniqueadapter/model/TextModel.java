@@ -8,7 +8,7 @@ import com.github.captain_miao.uniqueadapter.library.ItemModel;
  * @since 16/09/03
  */
 
-public class TextModel extends BaseModel implements ItemModel {
+public class TextModel extends BaseViewModel implements ItemModel {
 
     public String text;
 
@@ -19,15 +19,5 @@ public class TextModel extends BaseModel implements ItemModel {
     @Override
     public int getItemViewLayoutId() {
         return R.layout.rv_item_view_text;
-    }
-
-    @Override
-    public int getViewModelVariableId() {
-        return com.github.captain_miao.uniqueadapter.BR.viewModel;
-    }
-
-    @Override
-    public int getPresenterVariableId() {
-        return com.github.captain_miao.uniqueadapter.BR.presenter;
     }
 }

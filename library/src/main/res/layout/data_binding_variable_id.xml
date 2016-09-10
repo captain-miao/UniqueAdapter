@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+
+        <import type="com.github.captain_miao.uniqueadapter.library.ItemModel"/>
+
+        <import type="com.github.captain_miao.uniqueadapter.library.OnClickViewPresenter"/>
+
+        <variable
+            name="viewModel"
+            type="ItemModel"/>
+
+        <variable
+            name="presenter"
+            type="OnClickViewPresenter"/>
+    </data>
+
+    <Space/>
+</layout>

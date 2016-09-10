@@ -10,7 +10,7 @@ public interface ItemModel {
     // recycleView's itemView layout
     int getItemViewLayoutId();
     // itemView dataBinding variable: ? extends ItemModel
-    int getViewModelVariableId();
+    //int getViewModelVariableId();
     // itemView dataBinding variable:OnClickViewPresenter.onClick(View view, T t);
-    int getPresenterVariableId();
+    //int getPresenterVariableId();
 }

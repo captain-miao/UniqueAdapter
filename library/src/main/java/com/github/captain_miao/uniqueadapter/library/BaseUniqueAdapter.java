@@ -30,9 +30,9 @@ public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<UniqueViewH
     @Override
     public void onBindViewHolder(UniqueViewHolder holder, int position) {
         ItemModel item = getItem(position);
-        holder.dataBinding.setVariable(item.getViewModelVariableId(), item);
+        holder.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.viewModel, item);
         if (mPresenter != null) {
-            holder.dataBinding.setVariable(item.getPresenterVariableId(), mPresenter);
+            holder.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.presenter, mPresenter);
         }
         holder.dataBinding.executePendingBindings();
     }
