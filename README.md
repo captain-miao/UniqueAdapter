@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.captain-miao:uniqueadapter:1.0.1-SNAPSHOT'
+    compile 'com.github.captain-miao:uniqueadapter:1.0.2-SNAPSHOT'
 }
 
 ```
@@ -33,16 +33,6 @@ public class TextModel extends BaseModel implements ItemData {
     public int getItemViewLayoutId() {
         // the layoutId == RecyclerView.Adapter.ItemViewType
         return R.layout.rv_item_view_text;
-    }
-
-    @Override
-    public int getViewModelVariableId() {
-        return com.github.captain_miao.uniqueadapter.BR.viewModel;
-    }
-
-    @Override
-    public int getPresenterVariableId() {
-        return com.github.captain_miao.uniqueadapter.BR.presenter;
     }
 }
 ```
