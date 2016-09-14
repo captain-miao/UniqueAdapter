@@ -6,7 +6,7 @@
 
         <import type="com.github.captain_miao.uniqueadapter.model.TextModel"/>
 
-        <import type="com.github.captain_miao.uniqueadapter.library.OnClickViewPresenter"/>
+        <import type="com.github.captain_miao.uniqueadapter.library.UniquePresenter"/>
 
         <variable
             name="viewModel"
@@ -14,7 +14,7 @@
 
         <variable
             name="presenter"
-            type="OnClickViewPresenter"/>
+            type="UniquePresenter"/>
     </data>
 
     <LinearLayout

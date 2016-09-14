@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.captain-miao:uniqueadapter:1.0.2-SNAPSHOT'
+    compile 'com.github.captain-miao:uniqueadapter:1.0.2'
 }
 
 ```
@@ -21,7 +21,7 @@ dependencies {
 
 ## Step 1: define data model
 ```
-public class TextModel extends BaseModel implements ItemData {
+public class TextModel extends BaseViewModel implements ItemModel {
 
     public String text;
 
@@ -29,9 +29,9 @@ public class TextModel extends BaseModel implements ItemData {
         this.text = text;
     }
 
+    // the layoutId == RecyclerView.Adapter.ItemViewType
     @Override
     public int getItemViewLayoutId() {
-        // the layoutId == RecyclerView.Adapter.ItemViewType
         return R.layout.rv_item_view_text;
     }
 }
@@ -46,7 +46,7 @@ public class TextModel extends BaseModel implements ItemData {
 
         <import type="com.github.captain_miao.uniqueadapter.model.TextModel"/>
 
-        <import type="com.github.captain_miao.uniqueadapter.library.OnClickViewPresenter"/>
+        <import type="com.github.captain_miao.uniqueadapter.library.UniquePresenter"/>
 
         <variable
             name="viewModel"
@@ -54,7 +54,7 @@ public class TextModel extends BaseModel implements ItemData {
 
         <variable
             name="presenter"
-            type="OnClickViewPresenter"/>
+            type="UniquePresenter"/>
     </data>
 
     <LinearLayout
@@ -82,7 +82,7 @@ public class TextModel extends BaseModel implements ItemData {
 
 ## Step 3: create UniqueAdapter for RecycleView
 ```
-public class MainActivity extends AppCompatActivity implements OnClickViewPresenter<ItemData> {
+public class MainActivity extends AppCompatActivity implements UniquePresenter<ItemModel> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,25 +90,24 @@ public class MainActivity extends AppCompatActivity implements OnClickViewPresen
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_example);
 
-        List<ItemData> dataList = getMockData();
-
+        List<ItemModel> dataList = getMockData();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         recyclerView.setAdapter(new UniqueAdapter(dataList, this));
     }
 
     @Override
-    public void onClick(View view, ItemData itemData) {
-        if(itemData instanceof TextModel){
-            Toast.makeText(this, ((TextModel)itemData).text, Toast.LENGTH_SHORT).show();
-        } else if(itemData instanceof ImageModel){
-            Toast.makeText(this, ((ImageModel)itemData).url, Toast.LENGTH_SHORT).show();
+    public void onClick(View view, ItemModel item) {
+        if(item instanceof TextModel){
+            Toast.makeText(this, ((TextModel)item).text, Toast.LENGTH_SHORT).show();
+        } else if(item instanceof ImageModel){
+            Toast.makeText(this, ((ImageModel)item).url, Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    private List<ItemData> getMockData(){
-        List<ItemData> dataList = new ArrayList<>();
+    private List<ItemModel> getMockData(){
+        List<ItemModel> dataList = new ArrayList<>();
         dataList.add(new TextModel("Photo 1"));
         dataList.add(new ImageModel("http://ww2.sinaimg.cn/bmiddle/7a8aed7bjw1f340c8jrk4j20j60srgpf.jpg"));
         dataList.add(new TextModel("Photo 2"));

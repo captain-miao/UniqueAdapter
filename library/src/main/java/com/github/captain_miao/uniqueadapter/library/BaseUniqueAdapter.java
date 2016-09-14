@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 
 public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<UniqueViewHolder> {
 
-    protected OnClickViewPresenter<? extends ItemModel> mPresenter;
+    protected UniquePresenter<? extends ItemModel> mPresenter;
 
     public abstract ItemModel getItem(int position) ;
 
     @Override
     public UniqueViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType > 0) {// it's RvResourceId
+        if (viewType > 0) {// it's itemView of RecycleView layout ResourceId
             return new UniqueViewHolder(
                     LayoutInflater
                             .from(parent.getContext())
@@ -44,11 +44,11 @@ public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<UniqueViewH
         return item.getItemViewLayoutId();
     }
 
-    public OnClickViewPresenter<? extends ItemModel> getPresenter() {
+    public UniquePresenter<? extends ItemModel> getPresenter() {
         return mPresenter;
     }
 
-    public void setPresenter(OnClickViewPresenter<? extends ItemModel> presenter) {
+    public void setPresenter(UniquePresenter<? extends ItemModel> presenter) {
         mPresenter = presenter;
     }
 

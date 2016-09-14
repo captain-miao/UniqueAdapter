@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.github.captain_miao.uniqueadapter.library.ItemModel;
-import com.github.captain_miao.uniqueadapter.library.OnClickViewPresenter;
+import com.github.captain_miao.uniqueadapter.library.UniquePresenter;
 import com.github.captain_miao.uniqueadapter.library.UniqueAdapter;
 import com.github.captain_miao.uniqueadapter.model.ImageModel;
 import com.github.captain_miao.uniqueadapter.model.TextModel;
@@ -16,7 +16,7 @@ import com.github.captain_miao.uniqueadapter.model.TextModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnClickViewPresenter {
+public class MainActivity extends AppCompatActivity implements UniquePresenter<ItemModel> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +25,17 @@ public class MainActivity extends AppCompatActivity implements OnClickViewPresen
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_example);
 
         List<ItemModel> dataList = getMockData();
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         recyclerView.setAdapter(new UniqueAdapter(dataList, this));
     }
 
     @Override
-    public void onClick(View view, ItemModel itemData) {
-        if(itemData instanceof TextModel){
-            Toast.makeText(this, ((TextModel)itemData).text, Toast.LENGTH_SHORT).show();
-        } else if(itemData instanceof ImageModel){
-            Toast.makeText(this, ((ImageModel)itemData).url, Toast.LENGTH_SHORT).show();
+    public void onClick(View view, ItemModel item) {
+        if(item instanceof TextModel){
+            Toast.makeText(this, ((TextModel)item).text, Toast.LENGTH_SHORT).show();
+        } else if(item instanceof ImageModel){
+            Toast.makeText(this, ((ImageModel)item).url, Toast.LENGTH_SHORT).show();
         }
     }
 
