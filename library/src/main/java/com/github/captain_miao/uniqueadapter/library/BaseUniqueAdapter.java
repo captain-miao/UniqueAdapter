@@ -9,14 +9,14 @@ import android.view.ViewGroup;
  * @since 16/09/02
  */
 
-public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<UniqueViewHolder> {
+public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     protected UniquePresenter<? extends ItemModel> mPresenter;
 
     public abstract ItemModel getItem(int position) ;
 
     @Override
-    public UniqueViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType > 0) {// it's itemView of RecycleView layout ResourceId
             return new UniqueViewHolder(
                     LayoutInflater
@@ -28,13 +28,16 @@ public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<UniqueViewH
     }
 
     @Override
-    public void onBindViewHolder(UniqueViewHolder holder, int position) {
-        ItemModel item = getItem(position);
-        holder.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.viewModel, item);
-        if (mPresenter != null) {
-            holder.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.presenter, mPresenter);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if(holder instanceof UniqueViewHolder) {
+            ItemModel item = getItem(position);
+            UniqueViewHolder vh = ((UniqueViewHolder) holder);
+            vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.viewModel, item);
+            if (mPresenter != null) {
+                vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.presenter, mPresenter);
+            }
+            vh.dataBinding.executePendingBindings();
         }
-        holder.dataBinding.executePendingBindings();
     }
 
 
