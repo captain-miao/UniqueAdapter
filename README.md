@@ -13,12 +13,12 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.captain-miao:uniqueadapter:1.0.2'
+    compile 'com.github.captain-miao:uniqueadapter:1.0.3'
 }
 
 // if use in library, compile exclude group: 'com.android.support'
 dependencies {
-    compile("com.github.captain-miao:uniqueadapter:1.0.2") {
+    compile("com.github.captain-miao:uniqueadapter:1.0.3") {
         exclude group: 'com.android.support'
     }
     compile("com.android.support:recyclerview-v7:${this.supportLibrariesVersion}")
