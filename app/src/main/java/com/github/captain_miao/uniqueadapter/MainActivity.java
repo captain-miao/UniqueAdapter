@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.github.captain_miao.uniqueadapter.databinding.ActivityMainBinding;
 import com.github.captain_miao.uniqueadapter.library.ItemModel;
-import com.github.captain_miao.uniqueadapter.library.UniquePresenter;
 import com.github.captain_miao.uniqueadapter.library.UniqueAdapter;
+import com.github.captain_miao.uniqueadapter.library.UniquePresenter;
 import com.github.captain_miao.uniqueadapter.model.ImageModel;
 import com.github.captain_miao.uniqueadapter.model.TextModel;
 
@@ -23,14 +23,12 @@ public class MainActivity extends AppCompatActivity implements UniquePresenter<I
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         RecyclerView recyclerView = binding.rvExample;
 
-        List<ItemModel> dataList = getMockData();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        recyclerView.setAdapter(new UniqueAdapter(dataList, this));
+        recyclerView.setAdapter(new UniqueAdapter(getMockData(), this));
     }
 
     @Override
