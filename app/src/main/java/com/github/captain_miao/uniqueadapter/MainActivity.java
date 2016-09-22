@@ -1,5 +1,6 @@
 package com.github.captain_miao.uniqueadapter;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.github.captain_miao.uniqueadapter.databinding.ActivityMainBinding;
 import com.github.captain_miao.uniqueadapter.library.ItemModel;
 import com.github.captain_miao.uniqueadapter.library.UniquePresenter;
 import com.github.captain_miao.uniqueadapter.library.UniqueAdapter;
@@ -21,8 +23,9 @@ public class MainActivity extends AppCompatActivity implements UniquePresenter<I
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_example);
+
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        RecyclerView recyclerView = binding.rvExample;
 
         List<ItemModel> dataList = getMockData();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
