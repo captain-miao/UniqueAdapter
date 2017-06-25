@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <import type="com.github.captain_miao.uniqueadapter.library.ItemModel"/>
 
-        <import type="com.github.captain_miao.uniqueadapter.library.UniquePresenter"/>
+        <import type="com.github.captain_miao.uniqueadapter.library.OnClickPresenter"/>
+        <import type="com.github.captain_miao.uniqueadapter.library.OnLongClickPresenter"/>
 
         <variable
             name="viewModel"
             type="ItemModel"/>
 
         <variable
-            name="presenter"
-            type="UniquePresenter"/>
+            name="onClickPresenter"
+            type="OnClickPresenter"/>
+
+        <variable
+            name="onLongClickPresenter"
+            type="OnLongClickPresenter"/>
     </data>
 
-    <Space/>
+    <View android:layout_height="0dp" android:layout_width="0dp"/>
 </layout>

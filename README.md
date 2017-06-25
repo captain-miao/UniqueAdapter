@@ -13,12 +13,12 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.captain-miao:uniqueadapter:1.0.3'
+    compile 'com.github.captain-miao:uniqueadapter:1.1.0'
 }
 
 // if use in library, compile exclude group: 'com.android.support'
 dependencies {
-    compile("com.github.captain-miao:uniqueadapter:1.0.3") {
+    compile("com.github.captain-miao:uniqueadapter:1.1.0") {
         exclude group: 'com.android.support'
     }
     compile("com.android.support:recyclerview-v7:${this.supportLibrariesVersion}")
@@ -54,21 +54,21 @@ public class TextModel extends BaseViewModel implements ItemModel {
 
         <import type="com.github.captain_miao.uniqueadapter.model.TextModel"/>
 
-        <import type="com.github.captain_miao.uniqueadapter.library.UniquePresenter"/>
+        <import type="com.github.captain_miao.uniqueadapter.library.OnClickPresenter"/>
 
         <variable
             name="viewModel"
             type="TextModel"/>
 
         <variable
-            name="presenter"
-            type="UniquePresenter"/>
+            name="onClickPresenter"
+            type="OnClickPresenter"/>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(v) -> presenter.onClick(v, viewModel)}"
+        android:onClick="@{(v) -> onClickPresenter.onClick(v, viewModel)}"
         android:orientation="horizontal">
 
         <TextView
@@ -90,7 +90,7 @@ public class TextModel extends BaseViewModel implements ItemModel {
 
 ## Step 3: create UniqueAdapter for RecycleView
 ```
-public class MainActivity extends AppCompatActivity implements UniquePresenter<ItemModel> {
+public class MainActivity extends AppCompatActivity implements OnClickPresenter<ItemModel> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

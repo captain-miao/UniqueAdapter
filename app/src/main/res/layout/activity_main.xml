@@ -3,11 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_example"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.github.captain_miao.uniqueadapter.MainActivity"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:text='@{@bool/is_mobile ? "Mobile" : "Tablet"}'/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_example"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.github.captain_miao.uniqueadapter.MainActivity"/>
+    </LinearLayout>
 
 
 </layout>

@@ -6,21 +6,21 @@
 
         <import type="com.github.captain_miao.uniqueadapter.model.TextModel"/>
 
-        <import type="com.github.captain_miao.uniqueadapter.library.UniquePresenter"/>
+        <import type="com.github.captain_miao.uniqueadapter.library.OnClickPresenter"/>
 
         <variable
             name="viewModel"
             type="TextModel"/>
 
         <variable
-            name="presenter"
-            type="UniquePresenter"/>
+            name="onClickPresenter"
+            type="OnClickPresenter"/>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(v) -> presenter.onClick(v, viewModel)}"
+        android:onClick='@{(v) -> viewModel.text.equals("disable click") ? void : onClickPresenter.onClick(v, viewModel)}'
         android:orientation="horizontal">
 
         <TextView

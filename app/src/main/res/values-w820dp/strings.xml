@@ -1,0 +1,7 @@
+<resources>
+
+    <bool name="is_mobile">false</bool>
+    <bool name="is_tablet">true</bool>
+
+
+</resources>

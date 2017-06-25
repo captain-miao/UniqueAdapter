@@ -10,15 +10,16 @@ import android.widget.Toast;
 
 import com.github.captain_miao.uniqueadapter.databinding.ActivityMainBinding;
 import com.github.captain_miao.uniqueadapter.library.ItemModel;
+import com.github.captain_miao.uniqueadapter.library.OnLongClickPresenter;
 import com.github.captain_miao.uniqueadapter.library.UniqueAdapter;
-import com.github.captain_miao.uniqueadapter.library.UniquePresenter;
+import com.github.captain_miao.uniqueadapter.library.OnClickPresenter;
 import com.github.captain_miao.uniqueadapter.model.ImageModel;
 import com.github.captain_miao.uniqueadapter.model.TextModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements UniquePresenter<ItemModel> {
+public class MainActivity extends AppCompatActivity implements OnClickPresenter<ItemModel>,OnLongClickPresenter<ItemModel> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements UniquePresenter<I
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        recyclerView.setAdapter(new UniqueAdapter(getMockData(), this));
+        recyclerView.setAdapter(new UniqueAdapter(getMockData(), this, this));
     }
 
     @Override
@@ -49,5 +50,13 @@ public class MainActivity extends AppCompatActivity implements UniquePresenter<I
         dataList.add(new ImageModel("http://ww1.sinaimg.cn/bmiddle/610dc034jw1f7ef7i5m1zj20u011hdjm.jpg"));
 
         return dataList;
+    }
+
+    @Override
+    public boolean onLongClick(View view, ItemModel item) {
+        if (item instanceof ImageModel) {
+            Toast.makeText(this, "Pretty Girl", Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 }

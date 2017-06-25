@@ -18,9 +18,17 @@ public class UniqueAdapter extends BaseUniqueAdapter {
         this.mDataList = dataList;
     }
 
-    public UniqueAdapter(@NonNull List<? extends ItemModel> dataList, UniquePresenter<? extends ItemModel> presenter) {
+    public UniqueAdapter(@NonNull List<? extends ItemModel> dataList,
+                         OnClickPresenter<? extends ItemModel> onClickPresenter) {
         this.mDataList = dataList;
-        this.mPresenter = presenter;
+        this.mOnClickPresenter = onClickPresenter;
+    }
+    public UniqueAdapter(@NonNull List<? extends ItemModel> dataList,
+                         OnClickPresenter<? extends ItemModel> onClickPresenter,
+                         OnLongClickPresenter<? extends ItemModel> onLongClickPresenter) {
+        this.mDataList = dataList;
+        this.mOnClickPresenter = onClickPresenter;
+        this.mOnLongClickPresenter = onLongClickPresenter;
     }
 
     public ItemModel getItem(int position) {

@@ -8,6 +8,6 @@ import java.io.Serializable;
  * @author YanLu
  * @since 16/09/02
  */
-public interface UniquePresenter<T extends ItemModel> extends Serializable {
+public interface OnClickPresenter<T extends ItemModel> extends Serializable {
     void onClick(View view, T t);
 }

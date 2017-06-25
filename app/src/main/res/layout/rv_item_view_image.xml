@@ -7,28 +7,34 @@
 
         <import type="com.github.captain_miao.uniqueadapter.model.ImageModel"/>
 
-        <import type="com.github.captain_miao.uniqueadapter.library.UniquePresenter"/>
+        <import type="com.github.captain_miao.uniqueadapter.library.OnClickPresenter"/>
+        <import type="com.github.captain_miao.uniqueadapter.library.OnLongClickPresenter"/>
 
         <variable
             name="viewModel"
             type="ImageModel"/>
 
         <variable
-            name="presenter"
-            type="UniquePresenter"/>
+            name="onClickPresenter"
+            type="OnClickPresenter"/>
+        <variable
+            name="onLongClickPresenter"
+            type="OnLongClickPresenter"/>
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(v) -> presenter.onClick(v, viewModel)}"
+        android:onClick="@{(v) -> onClickPresenter.onClick(v, viewModel)}"
+        android:onLongClick="@{(v) -> onLongClickPresenter.onLongClick(v, viewModel)}"
         >
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            app:imageUrl="@{viewModel.url}"/>
+            app:imageUrl="@{viewModel.url}"
+        />
 
 
     </RelativeLayout>

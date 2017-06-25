@@ -13,11 +13,10 @@ import java.util.List;
 
 public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static final int  NO_POSITION = -1;
-    public static final long NO_ID = -1;
     public static final int  NO_ITEM_TYPE = -1;
 
-    protected UniquePresenter<? extends ItemModel> mPresenter;
+    protected OnClickPresenter<? extends ItemModel> mOnClickPresenter;
+    protected OnLongClickPresenter<? extends ItemModel> mOnLongClickPresenter;
 
     public abstract ItemModel getItem(int position) ;
 
@@ -39,8 +38,11 @@ public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<RecyclerVie
             ItemModel item = getItem(position);
             UniqueViewHolder vh = ((UniqueViewHolder) holder);
             vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.viewModel, item);
-            if (mPresenter != null) {
-                vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.presenter, mPresenter);
+            if (mOnClickPresenter != null) {
+                vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.onClickPresenter, mOnClickPresenter);
+            }
+            if (mOnLongClickPresenter != null) {
+                vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.onLongClickPresenter, mOnClickPresenter);
             }
             vh.dataBinding.executePendingBindings();
         }
@@ -54,9 +56,6 @@ public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<RecyclerVie
                 if(item instanceof ItemModel) {
                     UniqueViewHolder vh = ((UniqueViewHolder) holder);
                     vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.viewModel, item);
-                } else if(item instanceof UniquePresenter) {
-                    UniqueViewHolder vh = ((UniqueViewHolder) holder);
-                    vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.presenter, item);
                 }
             }
         } else {
@@ -70,13 +69,19 @@ public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<RecyclerVie
         return item != null ? item.getItemViewLayoutId() : NO_ITEM_TYPE;
     }
 
-    public UniquePresenter<? extends ItemModel> getPresenter() {
-        return mPresenter;
+    public OnClickPresenter<? extends ItemModel> getOnClickPresenter() {
+        return mOnClickPresenter;
     }
 
-    public void setPresenter(UniquePresenter<? extends ItemModel> presenter) {
-        mPresenter = presenter;
+    public void setOnClickPresenter(OnClickPresenter<? extends ItemModel> onClickPresenter) {
+        mOnClickPresenter = onClickPresenter;
     }
 
+    public OnLongClickPresenter<? extends ItemModel> getOnLongClickPresenter() {
+        return mOnLongClickPresenter;
+    }
 
+    public void setOnLongClickPresenter(OnLongClickPresenter<? extends ItemModel> onLongClickPresenter) {
+        mOnLongClickPresenter = onLongClickPresenter;
+    }
 }
