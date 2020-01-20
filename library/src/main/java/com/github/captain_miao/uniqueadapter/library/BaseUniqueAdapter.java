@@ -42,7 +42,7 @@ public abstract class BaseUniqueAdapter extends RecyclerView.Adapter<RecyclerVie
                 vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.onClickPresenter, mOnClickPresenter);
             }
             if (mOnLongClickPresenter != null) {
-                vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.onLongClickPresenter, mOnClickPresenter);
+                vh.dataBinding.setVariable(com.github.captain_miao.uniqueadapter.library.BR.onLongClickPresenter, mOnLongClickPresenter);
             }
             vh.dataBinding.executePendingBindings();
         }

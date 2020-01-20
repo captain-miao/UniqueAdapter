@@ -15,11 +15,11 @@ public class PicassoBinding {
 
     @BindingAdapter({"imageUrl"})
     public static void imageLoader(ImageView imageView, String url) {
-        Picasso.with(imageView.getContext()).load(url).into(imageView);
+        Picasso.get().load(url).into(imageView);
     }
     @BindingAdapter({"imageUrl", "error"})
     public static void imageLoader(ImageView imageView, String url, Drawable error) {
-        Picasso.with(imageView.getContext()).load(url).error(error).into(imageView);
+        Picasso.get().load(url).error(error).into(imageView);
     }
 
     @BindingAdapter({"android:src"})
